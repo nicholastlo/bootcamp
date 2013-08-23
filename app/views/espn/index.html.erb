@@ -1,0 +1,77 @@
+<h1>ESPN APIs</h1>
+
+<h2>Athletes</h2>
+
+<table border="1">
+	<tr>
+		<th>Sport</th>
+		<th>League</th>
+	</tr>
+
+	<tr>
+		<td>Baseball</td>
+		<td><%= link_to "Major League Baseball (MLB)", :controller => "espn", :action => "athletes", :sport => "baseball", :league => "mlb" %></td>
+	</tr>
+
+	<tr>
+		<td>Basketball</td>
+		<td>
+			<%= link_to "NCAA Men's College Basketball", :controller => "espn", :action => "athletes", :sport => "basketball", :league => "mens-college-basketball" %>
+			<br>
+			<%= link_to "National Basketball Association (NBA)", :controller => "espn", :action => "athletes", :sport => "basketball", :league => "nba" %>
+			<br>
+			<%= link_to "Women's National Basketball Association", :controller => "espn", :action => "athletes", :sport => "basketball", :league => "wnba" %>
+			<br>
+			<%= link_to "NCAA Women's College Basketball", :controller => "espn", :action => "athletes", :sport => "basketball", :league => "womens-college-basketball" %>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Football</td>
+		<td>
+			<%= link_to "NCAA College Football", :controller => "espn", :action => "athletes", :sport => "football", :league => "college-football" %>
+			<br>
+			<%= link_to "National Football League (NFL)", :controller => "espn", :action => "athletes", :sport => "football", :league => "nfl" %>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Golf</td>
+		<td>
+			<%= link_to "European Tour Golf", :controller => "espn", :action => "athletes", :sport => "golf", :league => "eur" %>
+			<br>
+			<%= link_to "Nationwide Golf Tour", :controller => "espn", :action => "athletes", :sport => "golf", :league => "ntw" %>
+			<br>
+			<%= link_to "Professional Golf Association	", :controller => "espn", :action => "athletes", :sport => "golf", :league => "pga" %>
+			<br>
+			<%= link_to "Senior Golf Association", :controller => "espn", :action => "athletes", :sport => "golf", :league => "sga" %>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Hockey</td>
+		<td><%= link_to "National Hockey League (NHL)", :controller => "espn", :action => "athletes", :sport => "hockey", :league => "nhl" %></td>
+	</tr>
+
+	<tr>
+		<td>Racing</td>
+		<td>
+			<%= link_to "Formula 1 Racing", :controller => "espn", :action => "athletes", :sport => "racing", :league => "f1" %>
+			<br>
+			<%= link_to "IndyCar Racing League", :controller => "espn", :action => "athletes", :sport => "racing", :league => "irl" %>
+			<br>
+			<%= link_to "NASCAR Racing", :controller => "espn", :action => "athletes", :sport => "racing", :league => "nascar" %>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Tennis</td>
+		<td>
+			<%= link_to "Association of Tennis Professionals", :controller => "espn", :action => "athletes", :sport => "tennis", :league => "atp" %>
+			<br>
+			<%= link_to "Women's Tennis Association", :controller => "espn", :action => "athletes", :sport => "tennis", :league => "wta" %>
+		</td>
+	</tr>
+
+</table>
+
