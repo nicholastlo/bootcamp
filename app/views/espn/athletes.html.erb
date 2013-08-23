@@ -1,4 +1,6 @@
 <p>Timestamp: <%= @data_in_json["timestamp"].to_date.strftime("%m/%d/%Y") %></p>
+<%= link_to "Home", :controller => "espn", :action => "index" %>
+
 <table border="1">
 	<tr>
 		<th>ID</th>
@@ -13,7 +15,6 @@
 		league = Hash[*sport["leagues"].flatten]
 		athletes = league["athletes"]
 		athletes.each do |athlete| 
-
 	%>
 
 	<tr>
@@ -21,7 +22,7 @@
 		<td><a href="<%= athlete["links"]["web"]["athletes"]["href"] %>" style="text-decoration:none;color:black"><%= athlete["firstName"] %></a></td>
 		<td><a href="<%= athlete["links"]["web"]["athletes"]["href"] %>" style="text-decoration:none;color:black"><%= athlete["lastName"] %></a></td>
 		<td><a href="<%= athlete["links"]["web"]["athletes"]["href"] %>"><img src="http://a.espncdn.com/combiner/i?img=/i/headshots/<%= params[:league] %>/players/full/<%= id %>.png&w=350&h=254"></a></td>
-		<td><%= link_to "News", :controller => "espn", :action => "news", :sport => params[:sport], :league => params[:league], :athlete_id => id %></td>
+		<td><%= link_to "News", :controller => "espn", :action => "athlete_news", :sport => params[:sport], :league => params[:league], :athlete_id => id %></td>
 	</tr>	
 
 	<% end %>

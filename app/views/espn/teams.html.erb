@@ -1,0 +1,30 @@
+<p>Timestamp: <%= @data_in_json["timestamp"].to_date.strftime("%m/%d/%Y") %></p>
+<%= link_to "Home", :controller => "espn", :action => "index" %>
+
+<table border="1">
+	<tr>
+		<th>ID</th>
+		<th>Location</th>
+		<th>Team Name</th>
+		<th>Abbreviation</th>
+		<th>News</th>
+	</tr>
+
+	<%
+		sport = Hash[*@data_in_json["sports"].flatten]
+		league = Hash[*sport["leagues"].flatten]
+		teams = league["teams"]
+		teams.each do |team| 
+	%>
+
+	<tr>
+		<td><%= id = team["id"] %></td>
+		<td><a href="<%= team["links"]["web"]["teams"]["href"] %>" style="text-decoration:none;color:black"><%= team["location"] %></a></td>
+		<td><a href="<%= team["links"]["web"]["teams"]["href"] %>" style="text-decoration:none;color:black"><%= team["name"] %></a></td>
+		<td><a href="<%= team["links"]["web"]["teams"]["href"] %>" style="text-decoration:none;color:black"><%= team["abbreviation"] %></a></td>
+		<td><%= link_to "News", :controller => "espn", :action => "team_news", :sport => params[:sport], :league => params[:league], :team_id => id %></td>
+	</tr>	
+
+	<% end %>
+
+</table>
