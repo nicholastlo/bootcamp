@@ -1,5 +1,10 @@
 <h1>ESPN APIs</h1>
 
+<%
+	sport = Hash[*@data_in_json["sports"].flatten]
+	leagues = sport["leagues"]
+%>
+
 <table>
 	<tr>
 		<td><h2>Athletes</h2></td>
@@ -71,6 +76,16 @@
 				</tr>
 
 				<tr>
+					<td>Soccer</td>
+					<td>
+						<% leagues.each do |league| %>
+							<%= link_to "#{league["name"]}", :controller => "espn", :action => "athletes", :sport => "soccer", :league => "#{league["abbreviation"]}" %>
+							<br>
+						<% end %>
+					</td>
+				</tr>
+
+				<tr>
 					<td>Tennis</td>
 					<td>
 						<%= link_to "Association of Tennis Professionals", :controller => "espn", :action => "athletes", :sport => "tennis", :league => "atp" %>
@@ -118,6 +133,16 @@
 				<tr>
 					<td>Hockey</td>
 					<td><%= link_to "National Hockey League (NHL)", :controller => "espn", :action => "teams", :sport => "hockey", :league => "nhl" %></td>
+				</tr>
+
+				<tr>
+					<td>Soccer</td>
+					<td>
+						<% leagues.each do |league| %>
+							<%= link_to "#{league["name"]}", :controller => "espn", :action => "teams", :sport => "soccer", :league => "#{league["abbreviation"]}" %>
+							<br>
+						<% end %>
+					</td>
 				</tr>
 			</table>
 		</td>

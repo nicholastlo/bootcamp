@@ -21,7 +21,19 @@
 		<td><%= id = athlete["id"] %></td>
 		<td><a href="<%= athlete["links"]["web"]["athletes"]["href"] %>" style="text-decoration:none;color:black"><%= athlete["firstName"] %></a></td>
 		<td><a href="<%= athlete["links"]["web"]["athletes"]["href"] %>" style="text-decoration:none;color:black"><%= athlete["lastName"] %></a></td>
-		<td><a href="<%= athlete["links"]["web"]["athletes"]["href"] %>"><img src="http://a.espncdn.com/combiner/i?img=/i/headshots/<%= params[:league] %>/players/full/<%= id %>.png&w=350&h=254"></a></td>
+		<% if params[:sport] == "soccer" %>
+			<td><a href="<%= athlete["links"]["web"]["athletes"]["href"] %>"><img src="http://soccernet-assets.espn.go.com/i/players/130x180/<%= id %>.jpg"></a></td>
+		<% elsif params[:sport] == "racing" %>
+			<% if params[:league] == "nascar" %>
+				<td><a href="<%= athlete["links"]["web"]["athletes"]["href"] %>"><img src="http://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/<%= id %>.png&w=180&h=130"></a></td>
+			<% else %>
+				<td><a href="<%= athlete["links"]["web"]["athletes"]["href"] %>"><img src="http://a.espncdn.com/i/rpm/mugs/65x90/<%= id %>.jpg"></a></td>
+			<% end %>
+		<% elsif params[:sport] == "golf" %>
+			<td><a href="<%= athlete["links"]["web"]["athletes"]["href"] %>"><img src="http://a.espncdn.com/combiner/i?img=/i/headshots/<%= params[:sport] %>/players/full/<%= id %>.png&w=180&h=130"></a></td>
+		<% else %>
+			<td><a href="<%= athlete["links"]["web"]["athletes"]["href"] %>"><img src="http://a.espncdn.com/combiner/i?img=/i/headshots/<%= params[:league] %>/players/full/<%= id %>.png&w=180&h=130"></a></td>
+		<% end %>
 		<td><%= link_to "News", :controller => "espn", :action => "athlete_news", :sport => params[:sport], :league => params[:league], :athlete_id => id %></td>
 	</tr>	
 

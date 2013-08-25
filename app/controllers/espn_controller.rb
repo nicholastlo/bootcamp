@@ -3,6 +3,8 @@ require 'json'
 
 class EspnController < ApplicationController
 	def index
+		@soccer_leagues = Net::HTTP.get(URI.parse("http://api.espn.com/v1/sports/soccer?apikey=zcuvb9y2rb7hjzqmfd7fgbsn"))
+		@data_in_json = parsed_json = ActiveSupport::JSON.decode(@soccer_leagues)
 	end
 
 	def athletes
